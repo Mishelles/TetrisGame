@@ -5,14 +5,41 @@
     <title>Тетрис</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js"></script>
 </head>
 <body>
     <div id="main-wrapper">
-        <section id="login">
-            <h1>Игра Тетрис</h1>
+
+        <h1>Игра Тетрис</h1>
+
+        <section id="login-section">
+            <form action="index.html" id="username-form">
+                <label>
+                    Введите имя: <br>
+                    <input id="username-form__username" type="text" placeholder="Имя пользователя" required>
+                    <input id="username-form__submit" type="submit" class="btn" value="Ввод">
+                </label>
+            </form>
+        </section>
+
+        <section id="game-section">
+            <div class="row">
+                <div id="information-block column">
+                    <h3>Игрок: <span id="player-name"></span></h3>
+                    <h3>Следующая фигура:</h3>
+                    <canvas id="next-teramino"></canvas>
+                    <h3>Клавиши для управления:</h3>
+                    <p>Стрелка влево - перемещение фигуры влево</p>
+                    <p>Стрелка вправо - перемещение фигуры вправо</p>
+                    <p>Пробел / Стрелка вниз - "уронить" фигуру</p>
+                    <p>Стрелка вверх - повернуть фигуру</p>
+                </div>
+                <div id="game-block column">
+                    <canvas id="glass" width='300' height='600'></canvas>
+                </div>
+            </div>
         </section>
 
     </div>
+    <script src="js/main.js"></script>
 </body>
 </html>
