@@ -15,6 +15,7 @@ const nextTeraminoCanvas = document.getElementById('next-teramino');
 const glassCanvas = document.getElementById('glass');
 var glassCtx = glassCanvas.getContext('2d');
 
+
 const shapes = [
     [ 1, 1, 1, 1 ],
     [ 1, 1, 1, 0, 1 ],
@@ -59,6 +60,8 @@ function render() {
 
     glassCtx.fillStyle = 'red';
     glassCtx.strokeStyle = 'black';
+    glassCtx.shadowBlur = 10;
+    glassCtx.shadowColor = 'brown';
     for (let y = 0; y < 4; y++) {
         for (let x = 0; x < 4; x++) {
             if (currentShape[y][x]) {
@@ -78,10 +81,10 @@ function newShape() {
         currentShape[y] = [];
         for (let x = 0; x < 4; x++) {
             let i = 4 * y + x;
-            if (typeof shape[i] !== 'undefined' && shape[i]) {
-                currentShape[y][x] = 0;
-            } else {
+            if (typeof shape[i] != 'undefined' && shape[i]) {
                 currentShape[y][x] = id + 1;
+            } else {
+                currentShape[y][x] = 0;
             }
         }
     }
@@ -268,7 +271,7 @@ document.body.onkeydown = function(e) {
         32: 'drop'
     };
     if (typeof keys[e.keyCode] != 'undefined') {
-        keyPress(keys[ e.keyCode ]);
+        keyPress(keys[e.keyCode]);
         render();
     }
 };
