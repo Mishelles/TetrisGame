@@ -9,7 +9,7 @@
 <body>
     <div id="main-wrapper">
 
-        <h1>Игра Тетрис</h1>
+        <h1 class="text-centered">Игра Тетрис</h1>
 
         <section id="login-section">
             <form action="index.html" id="username-form">
@@ -25,6 +25,7 @@
             <div class="row">
                 <div id="information-block column">
                     <h3>Игрок: <span id="player-name"></span></h3>
+                    <h3>Количество очков: <span id="score">0</span></h3>
                     <h3>Следующая фигура:</h3>
                     <canvas id="next-teramino"></canvas>
                     <h3>Клавиши для управления:</h3>
@@ -34,12 +35,29 @@
                     <p>Стрелка вверх - повернуть фигуру</p>
                 </div>
                 <div id="game-block column">
-                    <canvas id="glass" width='300' height='600'></canvas>
+                    <canvas id="board" width='200' height='400'></canvas>
                 </div>
             </div>
         </section>
 
+        <section id="records-section">
+            <h2 class="text-centered">Игра окончена!</h2>
+            <h3>Таблица рекордов</h3>
+            <table>
+                <thead>
+                    <th>Очки</th>
+                    <th>Имя игрока</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <button id="start-new-game" class="btn">Начать заново</button>
+        </section>
+
     </div>
+    <script src="js/shapes.js"></script>
+    <script src="js/game.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
