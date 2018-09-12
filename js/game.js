@@ -21,9 +21,6 @@ function drawSquare(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
 
-    ctx.shadowColor = 'black';
-    ctx.shadowBlur = 1;
-
     ctx.strokeStyle = "black";
     ctx.strokeRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
 }

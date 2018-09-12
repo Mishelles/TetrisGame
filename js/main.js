@@ -56,7 +56,9 @@ function updateScoresTable() {
     let scores = sortScores();
     let tableContent = "";
     scores.forEach(function (record) {
-        tableContent += `<tr><td>${record[1]}</td><td>${record[0]}</td></tr>`;
+        if (record[0] != 'undefined') {
+            tableContent += `<tr><td>${record[1]}</td><td>${record[0]}</td></tr>`;
+        }
     });
     scoreTableBody.innerHTML = tableContent;
 }
