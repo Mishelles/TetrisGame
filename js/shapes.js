@@ -1,3 +1,9 @@
+const nextShapeSpan = document.getElementById('next-shape');
+const achivementAudio = new Audio("audio/achivement.mp3");
+const gameoverAudio = new Audio("audio/gameover.wav");
+const moveAudio = new Audio("audio/move.wav");
+const fallAudio = new Audio("audio/falldown.wav");
+
 const shapeI = [
     [
         [0, 0, 0, 0],
@@ -163,13 +169,14 @@ const SHAPES = [
 // Генерация случайной фигуры
 function randomShape(){
     let r = Math.floor(Math.random() * SHAPES.length);
-    return new Shape(SHAPES[r][0],SHAPES[r][1]);
+    return new Shape(SHAPES[r][0],SHAPES[r][1], SHAPES[r][2]);
 }
 
 // Объект фигуры
-function Shape(tetromino, color) {
+function Shape(tetromino, color, letter) {
     this.tetromino = tetromino;
     this.color = color;
+    this.letter = letter;
 
     this.tetrominoN = 0;
     this.activeTetromino = this.tetromino[this.tetrominoN];
@@ -209,7 +216,10 @@ Shape.prototype.moveDown = function() {
     } else {
         // Блокируем движение фигуры и генерируем новую
         this.lock();
-        s = randomShape();
+        fallAudio.play();
+        currentShape = nextShape;
+        nextShape = randomShape();
+        updateNextShape(nextShape);
     }
 
 }
@@ -268,6 +278,7 @@ Shape.prototype.lock = function() {
             // Фигура остановилась у верхней границы - конец игры
             if(this.y + i < 0){
                 gameOver = true;
+                gameoverAudio.play();
                 endGameAndShowRecords();
                 break;
             }
@@ -295,7 +306,8 @@ Shape.prototype.lock = function() {
             // Увеличиваем количество очков
             score += 100;
             // Уменьшаем интервал передвижения фигур
-            interval -= 100;
+            interval -= 50;
+            achivementAudio.play();
         }
     }
     // Перерисовываем стакан
@@ -332,4 +344,8 @@ Shape.prototype.collision = function(x, y, shape) {
         }
     }
     return false;
+}
+
+function updateNextShape(shape) {
+    nextShapeSpan.innerText = shape.letter;
 }

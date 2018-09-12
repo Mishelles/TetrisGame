@@ -16,46 +16,55 @@
                 <label>
                     Введите имя: <br>
                     <input id="username-form__username" type="text" placeholder="Имя пользователя" required>
-                    <input id="username-form__submit" type="submit" class="btn" value="Ввод">
+                    <input id="username-form__submit" type="submit" class="btn" value="Начать игру!">
                 </label>
             </form>
+            <button class="btn" id="show-records">Рекорды</button>
         </section>
 
         <section id="game-section">
             <div class="row">
-                <div id="information-block column">
+                <div id="information-block" class="column">
                     <h3>Игрок: <span id="player-name"></span></h3>
                     <h3>Количество очков: <span id="score">0</span></h3>
-                    <h3>Следующая фигура:</h3>
-                    <canvas id="next-teramino"></canvas>
+                    <h3>Следующая фигура: <span id="next-shape"></span></h3>
                     <h3>Клавиши для управления:</h3>
-                    <p>Стрелка влево - перемещение фигуры влево</p>
-                    <p>Стрелка вправо - перемещение фигуры вправо</p>
-                    <p>Пробел / Стрелка вниз - "уронить" фигуру</p>
-                    <p>Стрелка вверх - повернуть фигуру</p>
+                    <ul>
+                        <li><em>Стрелка влево</em> - перемещение фигуры влево</li>
+                        <li><em>Стрелка вправо</em> - перемещение фигуры вправо</li>
+                        <li><em>Пробел / Стрелка вниз</em> - "уронить" фигуру</li>
+                        <li><em>Стрелка вверх</em> - повернуть фигуру</li>
+                    </ul>
+                    <button id="start-new-game" class="btn">Начать заново</button>
                 </div>
-                <div id="game-block column">
-                    <canvas id="board" width='200' height='400'></canvas>
+                <div id="game-block" class="column">
+                    <canvas id="board" width='300' height='600'></canvas>
                 </div>
             </div>
         </section>
 
         <section id="records-section">
             <h2 class="text-centered">Игра окончена!</h2>
-            <h3>Таблица рекордов</h3>
-            <table>
+            <div id="result" class="text-centered">Вы набрали <strong><span id="current-result"></span></strong> очков</div>
+            <h3 class="text-centered" style="margin-top: 5vh">Таблица рекордов</h3>
+            <table id="score-table">
                 <thead>
+                <tr>
                     <th>Очки</th>
                     <th>Имя игрока</th>
+                </tr>
                 </thead>
-                <tbody>
+                <tbody id="score-table-body">
 
                 </tbody>
             </table>
-            <button id="start-new-game" class="btn">Начать заново</button>
+            <button id="reset" class="btn">Начать заново</button>
         </section>
 
+        <p id="author">by <strong>Mikhail Sergeenkov</strong> [mishelless@ya.ru]</p>
+
     </div>
+    <!--<audio src="audio/tetris-main.mp3" autoplay loop></audio>-->
     <script src="js/shapes.js"></script>
     <script src="js/game.js"></script>
     <script src="js/main.js"></script>

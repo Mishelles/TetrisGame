@@ -9,7 +9,7 @@ const ROW = 20;
 const COL = 10;
 
 // Размер клетки
-const SQUARE_SIZE = 20;
+const SQUARE_SIZE = 30;
 
 // Цвет пустой клетки
 const EMPTY = "white";
@@ -20,6 +20,9 @@ let gameOver = true;
 function drawSquare(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+
+    ctx.shadowColor = 'black';
+    ctx.shadowBlur = 1;
 
     ctx.strokeStyle = "black";
     ctx.strokeRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
@@ -45,32 +48,36 @@ function drawBoard(){
 
 drawBoard();
 
-let s = randomShape();
+let currentShape = randomShape();
+let nextShape = randomShape();
+updateNextShape(nextShape);
 
 // Управление с клавиатуры
 document.addEventListener("keydown", function (event) {
     if(event.keyCode == 37) {
-        s.moveLeft();
+        currentShape.moveLeft();
         dropStart = Date.now();
     } else if(event.keyCode == 38) {
-        s.rotate();
+        currentShape.rotate();
         dropStart = Date.now();
+        moveAudio.play();
     } else if(event.keyCode == 39) {
-        s.moveRight();
+        currentShape.moveRight();
         dropStart = Date.now();
     } else if((event.keyCode == 40) || (event.keyCode == 32)) {
-        s.moveDown();
+        moveAudio.play();
+        currentShape.moveDown();
     }
 });
 
-// Опускаем фигуры через определенные интервалы (начальный интервал - 1000мс)
-let interval = 1000;
+// Опускаем фигуры через определенные интервалы (начальный интервал - 700мс)
+let interval = 700;
 let dropStart = Date.now();
 function drop() {
     let now = Date.now();
     let delta = now - dropStart;
     if(delta > interval) {
-        s.moveDown();
+        currentShape.moveDown();
         dropStart = Date.now();
     }
     if (!gameOver) {

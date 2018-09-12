@@ -9,10 +9,33 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    line-height: 1.6;
 }
 
 .btn {
-    padding: 5px;
+    padding: 7px;
+    border: 0;
+    border-radius: 10px;
+    background: darkcyan;
+    color: white;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3vh;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: dimgray;
+}
+
+input {
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-radius: 10px;
 }
 
 .row {
@@ -27,6 +50,43 @@ body {
     text-align: center;
 }
 
+table {
+    margin-bottom: 5vh;
+    border-radius: 10px;
+    width: 20vw;
+    text-align: center;
+    max-height: 30vh;
+    overflow-y: scroll;
+}
+
+table td, table th {
+    font-size: inherit;
+    margin: 0;
+}
+
+th {
+    font-weight: bold;
+}
+
+td, th {
+    vertical-align: inherit;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgba(0,0,0,0.5);
+}
+
+td {
+    background: white;
+}
+
+thead {
+    background-color: darkcyan;
+    color: white;
+}
+
+table th, table td {
+    padding: 0.5em 1em;
+}
+
 #main-wrapper {
     width: 70vw;
     height: 80vh;
@@ -34,14 +94,16 @@ body {
     margin-right: auto;
     margin-top: 5vh;
     margin-bottom: 5vh;
-    background: #dafffc;
+    background: #90ffbd;
     padding: 50px;
     border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
 }
 
 h1 {
     font-weight: 800;
-    font-size: 1.5vw;
+    font-size: 2vw;
+    margin-bottom: 3vh;
 }
 
 form#username-form {
@@ -61,4 +123,30 @@ section {
 canvas {
     border: 0.5px solid #000;
     border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+#next-shape {
+    font-size: 1.5vw;
+}
+
+#records-section {
+    width: 20vw;
+    margin: 3vh auto;
+}
+
+#game-section {
+    width: 40vw;
+    margin: 3vh auto;
+}
+
+#author {
+    position: absolute;
+    bottom: 7vh;
+    font-size: 0.7vw;
+}
+
+#information-block ul {
+    width: 17vw;
+    word-wrap: break-word;
 }
